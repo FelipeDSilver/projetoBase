@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace HelperStockBeta.Infra.IoC
 {
     public static class DependencyInjection
@@ -24,6 +25,10 @@ namespace HelperStockBeta.Infra.IoC
             services.AddScoped<IProductRepository, ProductRepository>();
             //Mapping Injection DTOs
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
